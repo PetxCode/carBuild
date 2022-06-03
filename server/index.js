@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/user", require("./router/userRouter"));
 app.use("/api/item", require("./router/itemRouter"));
-app.use("/api/like", require("./router/likeRouter"));
+app.use("/api/item", require("./router/likeRouter"));
 app.use("/api/rating", require("./router/ratingRouter"));
 
 app.listen(port, () => {

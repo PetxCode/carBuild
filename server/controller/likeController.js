@@ -6,21 +6,20 @@ const mongoose = require("mongoose");
 
 const createLike = async (req, res) => {
 	try {
+		const user = await likeModel.findById(req.params.id);
+
 		const likeBefore = await likeModel.findById(req.params.id);
-		if (likeBefore) {
-			res.status(201).json({ message: "Already Like Before!" });
-		} else {
-			const getItem = await itemModel.findById(req.params.item);
-			const likeData = await new likeModel({ _id: req.params.id });
 
-			likeData.item = getItem;
-			likeData.save();
+		const getItem = await itemModel.findById(req.params.item);
+		const likeData = await new likeModel({ _id: req.params.id });
 
-			getItem.like.push(mongoose.Types.ObjectId(likeData._id));
-			getItem.save();
+		likeData.item = getItem;
+		likeData.save();
 
-			res.status(201).json({ message: "Like Added", data: likeData });
-		}
+		getItem.like.push(mongoose.Types.ObjectId(likeData._id));
+		getItem.save();
+
+		res.status(201).json({ message: "Like Added", data: likeData });
 	} catch (error) {
 		res.status(404).json({ message: error.message });
 	}

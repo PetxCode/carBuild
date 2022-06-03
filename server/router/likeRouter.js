@@ -9,8 +9,8 @@ const {
 } = require("../controller/likeController");
 
 router.route("/").get(allLikes);
-router.route("/:id/:item").get(getItemLikes);
-router.route("/:id/:item").post(createLike);
+router.route("/:id/:item/like").get(getItemLikes);
+router.route("/:id/:item/like").post(createLike);
 router.route("/:id/:item/:like").delete(deleteLikes);
 router.route("/:id/:item/:like").get(itemLikes);
 

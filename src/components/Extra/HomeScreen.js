@@ -55,9 +55,12 @@ const HomeSccreen = () => {
 									Add To Cart
 								</Cart>
 							</Holder>
-							<Message>{props.price}</Message>
+							<Message>${props.price}</Message>
 						</TextHolder>
-						<ImageData props={props} name />
+						<Holder>
+							<ImageData props={props} name />
+							<ImageData props={props} like />
+						</Holder>
 					</Card>
 				))}
 			</Wrapper>
@@ -136,6 +139,7 @@ const Icon = styled(AiTwotoneDelete)`
 const Holder = styled.div`
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 `;
 
 const Message = styled.div`
